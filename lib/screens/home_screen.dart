@@ -3,7 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
-import 'widgets/circle_button.dart';
+import '../data/data.dart';
+import 'widgets/widgets.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -30,6 +31,9 @@ class HomeScreen extends StatelessWidget {
               CircleButton(icon: Icons.search, onPressed: () {}),
               CircleButton(icon: MdiIcons.facebookMessenger, onPressed: () {}),
             ],
+          ),
+          const SliverToBoxAdapter(
+            child: CreatePostContainer(currentUser: currentUser),
           ),
           SliverList(
             delegate: SliverChildBuilderDelegate(
