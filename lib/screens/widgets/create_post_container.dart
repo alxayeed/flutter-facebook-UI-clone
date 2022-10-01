@@ -1,7 +1,7 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
 import '../../models/user_model.dart';
+import 'widgets.dart';
 
 class CreatePostContainer extends StatelessWidget {
   final User currentUser;
@@ -16,13 +16,9 @@ class CreatePostContainer extends StatelessWidget {
       color: Colors.white,
       child: Column(
         children: [
-          // Add circle avatar and textbox
           Row(
             children: [
-              CircleAvatar(
-                backgroundImage:
-                    CachedNetworkImageProvider(currentUser.imageUrl),
-              ),
+              ProfileAvatar(imageUrl: currentUser.imageUrl),
               const SizedBox(width: 8.0),
               const Expanded(
                 child: TextField(
