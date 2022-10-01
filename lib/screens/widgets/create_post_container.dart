@@ -54,27 +54,27 @@ class CreatePostContainer extends StatelessWidget {
                 const VerticalDivider(width: 8.0),
                 ElevatedButton.icon(
                   onPressed: () {},
-                  label: const Text("Live"),
+                  label: const Text("Photo"),
                   style: ElevatedButton.styleFrom(
                       primary: Colors.white,
                       onPrimary: Colors.black,
                       elevation: 0.0),
                   icon: const Icon(
-                    Icons.videocam,
-                    color: Colors.red,
+                    Icons.photo_library,
+                    color: Colors.green,
                   ),
                 ),
                 const VerticalDivider(width: 8.0),
                 ElevatedButton.icon(
                   onPressed: () {},
-                  label: const Text("Live"),
+                  label: const Text("Room"),
                   style: ElevatedButton.styleFrom(
                       primary: Colors.white,
                       onPrimary: Colors.black,
                       elevation: 0.0),
                   icon: const Icon(
-                    Icons.videocam,
-                    color: Colors.red,
+                    Icons.video_call,
+                    color: Colors.purple,
                   ),
                 ),
               ],
