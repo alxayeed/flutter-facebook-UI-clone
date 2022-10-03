@@ -27,7 +27,7 @@ class Room extends StatelessWidget {
               child: _CreateRoomButton(),
             );
           }
-          final user = onlineUsers[index + 1];
+          final user = onlineUsers[index - 1];
           return Container(
             margin: const EdgeInsets.all(2.0),
             child: ProfileAvatar(
@@ -48,6 +48,16 @@ class _CreateRoomButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return OutlinedButton(
       onPressed: () {},
+      style: ButtonStyle(
+        backgroundColor: MaterialStateProperty.all(Colors.white),
+        textStyle: MaterialStateProperty.all(
+            const TextStyle(color: Palette.facebookBlue)),
+        shape: MaterialStateProperty.all(
+          RoundedRectangleBorder(borderRadius: BorderRadius.circular(30.0)),
+        ),
+        side: MaterialStateProperty.all(
+            BorderSide(width: 3.0, color: Colors.blueAccent.shade200)),
+      ),
       child: Row(
         children: [
           ShaderMask(
