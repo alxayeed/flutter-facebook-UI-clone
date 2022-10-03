@@ -28,8 +28,8 @@ class Room extends StatelessWidget {
             );
           }
           final user = onlineUsers[index - 1];
-          return Container(
-            margin: const EdgeInsets.all(2.0),
+          return Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 8.0),
             child: ProfileAvatar(
               imageUrl: user.imageUrl,
               isOnline: true,
