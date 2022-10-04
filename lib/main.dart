@@ -4,10 +4,12 @@ import 'package:flutter/material.dart';
 import 'config/palette.dart';
 
 void main() {
-  runApp(FacebookUI());
+  runApp(const FacebookUI());
 }
 
 class FacebookUI extends StatelessWidget {
+  const FacebookUI({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -18,6 +20,6 @@ class FacebookUI extends StatelessWidget {
           scaffoldBackgroundColor: Palette.scaffold,
           visualDensity: VisualDensity.adaptivePlatformDensity,
         ),
-        home: HomeScreen());
+        home: const HomeScreen());
   }
 }
