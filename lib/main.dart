@@ -13,13 +13,16 @@ class FacebookUI extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        title: 'Facebook UI',
-        debugShowCheckedModeBanner: false,
-        theme: ThemeData(
-          primarySwatch: Colors.blue,
-          scaffoldBackgroundColor: Palette.scaffold,
-          visualDensity: VisualDensity.adaptivePlatformDensity,
-        ),
-        home: const HomeScreen());
+      title: 'Facebook UI',
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+        scaffoldBackgroundColor: Palette.scaffold,
+        visualDensity: VisualDensity.adaptivePlatformDensity,
+      ),
+      home: const SafeArea(
+        child: NavBarScreen(),
+      ),
+    );
   }
 }
