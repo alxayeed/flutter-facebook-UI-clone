@@ -36,8 +36,11 @@ class _NavBarScreenState extends State<NavBarScreen> {
           index: _selectedTab,
           children: _screens,
         ),
-        bottomNavigationBar:
-            CustomTabBar(selectedTab: _selectedTab, onTap: _onTabBarTapped),
+        bottomNavigationBar: Padding(
+          padding: const EdgeInsets.only(bottom: 8.0),
+          child:
+              CustomTabBar(selectedTab: _selectedTab, onTap: _onTabBarTapped),
+        ),
       ),
     );
   }

@@ -42,17 +42,17 @@ class CustomTabBar extends StatelessWidget {
         Icon(
           MdiIcons.accountCancelOutline,
           size: 30.0,
-          color: selectedTab == 3 ? Palette.facebookBlue : Colors.black45,
+          color: selectedTab == 2 ? Palette.facebookBlue : Colors.black45,
         ),
         Icon(
           MdiIcons.bellOutline,
           size: 30.0,
-          color: selectedTab == 4 ? Palette.facebookBlue : Colors.black45,
+          color: selectedTab == 3 ? Palette.facebookBlue : Colors.black45,
         ),
         Icon(
           Icons.menu,
           size: 30.0,
-          color: selectedTab == 5 ? Palette.facebookBlue : Colors.black45,
+          color: selectedTab == 4 ? Palette.facebookBlue : Colors.black45,
         ),
       ],
     );
