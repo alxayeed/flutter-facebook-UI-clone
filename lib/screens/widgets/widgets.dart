@@ -1,4 +1,5 @@
 export 'circle_button.dart';
+export 'contact_list.dart';
 export 'create_post_container.dart';
 export 'custom_app_bar.dart';
 export 'custom_tab_bar.dart';

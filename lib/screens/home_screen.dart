@@ -137,7 +137,16 @@ class _HomeScreenDesktop extends StatelessWidget {
           ),
         ),
         const Spacer(),
-        Flexible(flex: 1, child: Container(color: Colors.cyan))
+        const Flexible(
+          flex: 1,
+          child: Align(
+            alignment: Alignment.centerRight,
+            child: Padding(
+              padding: EdgeInsets.only(top: 20.0, right: 20.0),
+              child: ContactList(users: onlineUsers),
+            ),
+          ),
+        )
       ],
     );
   }
