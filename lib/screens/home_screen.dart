@@ -12,6 +12,7 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    //TODO: Gesturedetector, focus scope-unscope
     return const Scaffold(
       body: Responsive(
         mobile: _HomeScreenMobile(),
@@ -78,6 +79,42 @@ class _HomeScreenDesktop extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Row(
+      children: [
+        Flexible(flex: 1, child: Container(color: Colors.orange)),
+        const Spacer(),
+        SizedBox(
+          width: 600.0,
+          child: CustomScrollView(
+            slivers: [
+              const SliverToBoxAdapter(
+                child: CreatePostContainer(currentUser: currentUser),
+              ),
+              const SliverPadding(
+                padding: EdgeInsets.fromLTRB(0.0, 10.0, 0.0, 5.0),
+                sliver: SliverToBoxAdapter(
+                  child: Room(onlineUsers: onlineUsers),
+                ),
+              ),
+              SliverPadding(
+                padding: const EdgeInsets.fromLTRB(0.0, 5.0, 0.0, 5.0),
+                sliver: SliverToBoxAdapter(
+                  child: Stories(currentUser: currentUser, stories: stories),
+                ),
+              ),
+              SliverList(
+                delegate: SliverChildBuilderDelegate((context, index) {
+                  final Post post = posts[index];
+                  return PostContainer(post: post);
+                }, childCount: posts.length //ListTile
+                    ), //SliverChildBuildDelegate
+              )
+            ],
+          ),
+        ),
+        const Spacer(),
+        Flexible(flex: 1, child: Container(color: Colors.cyan))
+      ],
+    );
   }
 }
