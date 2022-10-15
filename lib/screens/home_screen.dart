@@ -7,23 +7,42 @@ import '../data/data.dart';
 import '../models/post_model.dart';
 import 'widgets/widgets.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
+
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  final TrackingScrollController _trackingScrollController =
+      TrackingScrollController();
+
+  @override
+  void dispose() {
+    _trackingScrollController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
     //TODO: Gesturedetector, focus scope-unscope
-    return const Scaffold(
+    return Scaffold(
       body: Responsive(
-        mobile: _HomeScreenMobile(),
-        desktop: _HomeScreenDesktop(),
+        mobile: _HomeScreenMobile(scrollController: _trackingScrollController),
+        desktop:
+            _HomeScreenDesktop(scrollController: _trackingScrollController),
       ),
     );
   }
 }
 
 class _HomeScreenMobile extends StatelessWidget {
-  const _HomeScreenMobile({Key? key}) : super(key: key);
+  final TrackingScrollController scrollController;
+  const _HomeScreenMobile({
+    Key? key,
+    required this.scrollController,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -75,7 +94,12 @@ class _HomeScreenMobile extends StatelessWidget {
 }
 
 class _HomeScreenDesktop extends StatelessWidget {
-  const _HomeScreenDesktop({Key? key}) : super(key: key);
+  final TrackingScrollController scrollController;
+
+  const _HomeScreenDesktop({
+    Key? key,
+    required this.scrollController,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
