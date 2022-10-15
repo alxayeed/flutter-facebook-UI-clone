@@ -1,5 +1,6 @@
 import 'package:facebook_clone/config/palette.dart';
 import 'package:facebook_clone/screens/widgets/profile_avatar.dart';
+import 'package:facebook_clone/screens/widgets/responsive.dart';
 import 'package:flutter/material.dart';
 
 import '../../models/user_model.dart';
@@ -10,32 +11,40 @@ class Room extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 60.0,
-      color: Colors.white,
-      child: ListView.builder(
-        padding: const EdgeInsets.symmetric(
-          horizontal: 4.0,
-          vertical: 10.0,
-        ),
-        scrollDirection: Axis.horizontal,
-        itemCount: 1 + onlineUsers.length,
-        itemBuilder: (context, index) {
-          if (index == 0) {
-            return const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 8.0),
-              child: _CreateRoomButton(),
-            );
-          }
-          final user = onlineUsers[index - 1];
-          return Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 8.0),
-            child: ProfileAvatar(
-              imageUrl: user.imageUrl,
-              isOnline: true,
+    final bool isDesktop = Responsive.isDesktop(context);
+    return ClipRRect(
+      borderRadius: BorderRadius.circular(isDesktop ? 10.0 : 0.0),
+      child: Card(
+        margin: EdgeInsets.symmetric(horizontal: isDesktop ? 1.0 : 0.0),
+        elevation: isDesktop ? 2.0 : 0.0,
+        child: Container(
+          height: 60.0,
+          color: Colors.white,
+          child: ListView.builder(
+            padding: const EdgeInsets.symmetric(
+              horizontal: 4.0,
+              vertical: 10.0,
             ),
-          );
-        },
+            scrollDirection: Axis.horizontal,
+            itemCount: 1 + onlineUsers.length,
+            itemBuilder: (context, index) {
+              if (index == 0) {
+                return const Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 8.0),
+                  child: _CreateRoomButton(),
+                );
+              }
+              final user = onlineUsers[index - 1];
+              return Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                child: ProfileAvatar(
+                  imageUrl: user.imageUrl,
+                  isOnline: true,
+                ),
+              );
+            },
+          ),
+        ),
       ),
     );
   }

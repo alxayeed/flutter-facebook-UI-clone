@@ -16,9 +16,6 @@ class CreatePostContainer extends StatelessWidget {
       child: Card(
         margin: EdgeInsets.symmetric(horizontal: isDesktop ? 1.0 : 0.0),
         elevation: isDesktop ? 2.0 : 0.0,
-        shape: isDesktop
-            ? RoundedRectangleBorder(borderRadius: BorderRadius.circular(60.0))
-            : null,
         child: Container(
           padding: const EdgeInsets.fromLTRB(12.0, 8.0, 12.0, 0.0),
           height: 100.0,
