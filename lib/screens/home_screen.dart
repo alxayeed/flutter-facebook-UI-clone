@@ -87,6 +87,12 @@ class _HomeScreenDesktop extends StatelessWidget {
           width: 600.0,
           child: CustomScrollView(
             slivers: [
+              SliverPadding(
+                padding: const EdgeInsets.fromLTRB(0.0, 20.0, 0.0, 10.0),
+                sliver: SliverToBoxAdapter(
+                  child: Stories(currentUser: currentUser, stories: stories),
+                ),
+              ),
               const SliverToBoxAdapter(
                 child: CreatePostContainer(currentUser: currentUser),
               ),
@@ -94,12 +100,6 @@ class _HomeScreenDesktop extends StatelessWidget {
                 padding: EdgeInsets.fromLTRB(0.0, 10.0, 0.0, 5.0),
                 sliver: SliverToBoxAdapter(
                   child: Room(onlineUsers: onlineUsers),
-                ),
-              ),
-              SliverPadding(
-                padding: const EdgeInsets.fromLTRB(0.0, 5.0, 0.0, 5.0),
-                sliver: SliverToBoxAdapter(
-                  child: Stories(currentUser: currentUser, stories: stories),
                 ),
               ),
               SliverList(

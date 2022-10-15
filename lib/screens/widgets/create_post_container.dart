@@ -10,73 +10,83 @@ class CreatePostContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.fromLTRB(12.0, 8.0, 12.0, 0.0),
-      height: 100.0,
-      color: Colors.white,
-      child: Column(
-        children: [
-          Row(
+    final bool isDesktop = Responsive.isDesktop(context);
+    return ClipRRect(
+      borderRadius: BorderRadius.circular(isDesktop ? 10.0 : 0.0),
+      child: Card(
+        margin: EdgeInsets.symmetric(horizontal: isDesktop ? 1.0 : 0.0),
+        elevation: isDesktop ? 2.0 : 0.0,
+        shape: isDesktop
+            ? RoundedRectangleBorder(borderRadius: BorderRadius.circular(60.0))
+            : null,
+        child: Container(
+          padding: const EdgeInsets.fromLTRB(12.0, 8.0, 12.0, 0.0),
+          height: 100.0,
+          color: Colors.white,
+          child: Column(
             children: [
-              ProfileAvatar(imageUrl: currentUser.imageUrl),
-              const SizedBox(width: 8.0),
-              const Expanded(
-                child: TextField(
-                  decoration: InputDecoration.collapsed(
-                      hintText: "What's on your mind?"),
+              Row(
+                children: [
+                  ProfileAvatar(imageUrl: currentUser.imageUrl),
+                  const SizedBox(width: 8.0),
+                  const Expanded(
+                    child: TextField(
+                      decoration: InputDecoration.collapsed(
+                          hintText: "What's on your mind?"),
+                    ),
+                  )
+                ],
+              ),
+              const Divider(height: 10.0, thickness: 0.5),
+              SizedBox(
+                height: 40.0,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    ElevatedButton.icon(
+                      onPressed: () {},
+                      label: const Text("Live"),
+                      style: ElevatedButton.styleFrom(
+                          primary: Colors.white,
+                          onPrimary: Colors.black,
+                          elevation: 0.0),
+                      icon: const Icon(
+                        Icons.videocam,
+                        color: Colors.red,
+                      ),
+                    ),
+                    const VerticalDivider(width: 8.0),
+                    ElevatedButton.icon(
+                      onPressed: () {},
+                      label: const Text("Photo"),
+                      style: ElevatedButton.styleFrom(
+                          primary: Colors.white,
+                          onPrimary: Colors.black,
+                          elevation: 0.0),
+                      icon: const Icon(
+                        Icons.photo_library,
+                        color: Colors.green,
+                      ),
+                    ),
+                    const VerticalDivider(width: 8.0),
+                    ElevatedButton.icon(
+                      onPressed: () {},
+                      label: const Text("Room"),
+                      style: ElevatedButton.styleFrom(
+                          primary: Colors.white,
+                          onPrimary: Colors.black,
+                          elevation: 0.0),
+                      icon: const Icon(
+                        Icons.video_call,
+                        color: Colors.purple,
+                      ),
+                    ),
+                  ],
                 ),
               )
             ],
           ),
-          const Divider(height: 10.0, thickness: 0.5),
-          // Add Live, photos and videocall buttons
-          SizedBox(
-            height: 40.0,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                ElevatedButton.icon(
-                  onPressed: () {},
-                  label: const Text("Live"),
-                  style: ElevatedButton.styleFrom(
-                      primary: Colors.white,
-                      onPrimary: Colors.black,
-                      elevation: 0.0),
-                  icon: const Icon(
-                    Icons.videocam,
-                    color: Colors.red,
-                  ),
-                ),
-                const VerticalDivider(width: 8.0),
-                ElevatedButton.icon(
-                  onPressed: () {},
-                  label: const Text("Photo"),
-                  style: ElevatedButton.styleFrom(
-                      primary: Colors.white,
-                      onPrimary: Colors.black,
-                      elevation: 0.0),
-                  icon: const Icon(
-                    Icons.photo_library,
-                    color: Colors.green,
-                  ),
-                ),
-                const VerticalDivider(width: 8.0),
-                ElevatedButton.icon(
-                  onPressed: () {},
-                  label: const Text("Room"),
-                  style: ElevatedButton.styleFrom(
-                      primary: Colors.white,
-                      onPrimary: Colors.black,
-                      elevation: 0.0),
-                  icon: const Icon(
-                    Icons.video_call,
-                    color: Colors.purple,
-                  ),
-                ),
-              ],
-            ),
-          )
-        ],
+        ),
       ),
     );
   }

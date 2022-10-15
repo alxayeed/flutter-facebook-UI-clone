@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:facebook_clone/screens/widgets/profile_avatar.dart';
+import 'package:facebook_clone/screens/widgets/responsive.dart';
 import 'package:flutter/material.dart';
 
 import '../../config/palette.dart';
@@ -19,15 +20,16 @@ class Stories extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: 200.0,
-      color: Colors.white,
+      color: Responsive.isDesktop(context) ? Colors.transparent : Colors.white,
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
         itemCount: 1 + stories.length,
         itemBuilder: (BuildContext context, int index) {
           if (index == 0) {
             return Padding(
-              padding:
-                  const EdgeInsets.symmetric(horizontal: 8.0, vertical: 4.0),
+              padding: EdgeInsets.symmetric(
+                  horizontal: Responsive.isDesktop(context) ? 0.0 : 8.0,
+                  vertical: 4.0),
               child: _StoryCard(
                 isAddStory: true,
                 currentUser: currentUser,
@@ -75,9 +77,17 @@ class _StoryCard extends StatelessWidget {
           height: double.infinity,
           width: 110.0,
           decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(12.0),
-            gradient: Palette.storyGradient,
-          ),
+              borderRadius: BorderRadius.circular(12.0),
+              gradient: Palette.storyGradient,
+              boxShadow: Responsive.isDesktop(context)
+                  ? const [
+                      BoxShadow(
+                        color: Colors.black26,
+                        blurRadius: 4.0,
+                        offset: Offset(0, 2),
+                      )
+                    ]
+                  : null),
         ),
         Positioned(
           top: 6.0,
