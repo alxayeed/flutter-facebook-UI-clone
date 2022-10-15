@@ -1,3 +1,4 @@
+import 'package:facebook_clone/data/data.dart';
 import 'package:facebook_clone/screens/home_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -29,16 +30,27 @@ class _NavBarScreenState extends State<NavBarScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final Size screenSize = MediaQuery.of(context).size;
     return DefaultTabController(
       length: _screens.length,
       child: Scaffold(
+        appBar: Responsive.isDesktop(context)
+            ? PreferredSize(
+                preferredSize: Size(screenSize.width, 100.0),
+                child: CustomAppBar(
+                    screens: _screens,
+                    currentUser: currentUser,
+                    selectedTab: _selectedTab,
+                    onTap: _onTabBarTapped),
+              )
+            : null,
         body: IndexedStack(
           index: _selectedTab,
           children: _screens,
         ),
         bottomNavigationBar: !Responsive.isDesktop(context)
-            ? Padding(
-                padding: const EdgeInsets.only(bottom: 8.0),
+            ? SizedBox(
+                height: 45.0,
                 child: CustomTabBar(
                     selectedTab: _selectedTab, onTap: _onTabBarTapped),
               )

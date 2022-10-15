@@ -6,11 +6,13 @@ import '../../config/palette.dart';
 class CustomTabBar extends StatelessWidget {
   final int selectedTab;
   final Function(int) onTap;
-  const CustomTabBar({
-    Key? key,
-    required this.selectedTab,
-    required this.onTap,
-  }) : super(key: key);
+  final bool isBottomNavBar;
+  const CustomTabBar(
+      {Key? key,
+      required this.selectedTab,
+      required this.onTap,
+      this.isBottomNavBar = false})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -18,14 +20,23 @@ class CustomTabBar extends StatelessWidget {
       // currentIndex: selectedTab,
       indicatorColor: Palette.facebookBlue,
       indicatorPadding: EdgeInsets.zero,
-      indicator: const BoxDecoration(
-        border: Border(
-          top: BorderSide(
-            color: Palette.facebookBlue,
-            width: 3.0,
-          ),
-        ),
-      ),
+      indicator: isBottomNavBar
+          ? const BoxDecoration(
+              border: Border(
+                bottom: BorderSide(
+                  color: Palette.facebookBlue,
+                  width: 3.0,
+                ),
+              ),
+            )
+          : const BoxDecoration(
+              border: Border(
+                top: BorderSide(
+                  color: Palette.facebookBlue,
+                  width: 3.0,
+                ),
+              ),
+            ),
       // unselectedItemColor: Colors.black45,
       onTap: onTap,
       tabs: [
