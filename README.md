@@ -54,6 +54,7 @@
 - [Expanded](https://api.flutter.dev/flutter/widgets/Expanded-class.html)
 - [ElevatedButton.icon()](https://api.flutter.dev/flutter/material/ElevatedButton/ElevatedButton.icon.html)
 - [Flexible](https://api.flutter.dev/flutter/widgets/Flexible-class.html)
+- [FocusScope]()
 - [GestureDetector]()
 - [InkWell](https://api.flutter.dev/flutter/material/InkWell-class.html)
 - [IconButton](https://api.flutter.dev/flutter/material/IconButton-class.html)
