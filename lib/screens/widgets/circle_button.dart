@@ -19,7 +19,6 @@ class CircleButton extends StatelessWidget {
         color: Colors.grey[200],
         shape: BoxShape.circle,
       ),
-      // TODO: Align in center
       child: IconButton(
         onPressed: onPressed as void Function()?,
         icon: Icon(

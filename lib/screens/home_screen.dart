@@ -26,12 +26,15 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    //TODO: Gesturedetector, focus scope-unscope
-    return Scaffold(
-      body: Responsive(
-        mobile: _HomeScreenMobile(scrollController: _trackingScrollController),
-        desktop:
-            _HomeScreenDesktop(scrollController: _trackingScrollController),
+    return GestureDetector(
+      onTap: () => FocusScope.of(context).unfocus(),
+      child: Scaffold(
+        body: Responsive(
+          mobile:
+              _HomeScreenMobile(scrollController: _trackingScrollController),
+          desktop:
+              _HomeScreenDesktop(scrollController: _trackingScrollController),
+        ),
       ),
     );
   }
